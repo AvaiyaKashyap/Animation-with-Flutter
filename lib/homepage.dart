@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:animation_project/customscroll.dart';
+import 'package:animation_project/liquidswipe.dart';
 import 'package:animation_project/loginpage.dart';
 import 'package:animation_project/parallax.dart';
 import 'package:animation_project/rating.dart';
@@ -92,19 +93,26 @@ class _HomePageState extends State<HomePage> {
                   MaterialPageRoute(builder: (context) => RatingAnimation()),
                 );
               }, child: Text("Rating Animation")),
+              SizedBox(height: 20),
+              ElevatedButton(onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LiquidSwipeAnimation()),
+                );
+              }, child: Text("Swipe Animation")),
             ],
           ),
         ),
       ),
         ConfettiWidget(
           confettiController: _controller,
-          blastDirection: pi / 2,
+          //blastDirection: pi / 2,
           emissionFrequency: 1,
-          maximumSize: Size(100,1),
-          minimumSize: Size(100,1),
-          numberOfParticles: 20,
+          maximumSize: Size(10,10),
+          minimumSize: Size(10,10),
+          numberOfParticles: 5,
           gravity: 0,
-          //blastDirectionality: BlastDirectionality.explosive,
+          blastDirectionality: BlastDirectionality.explosive,
           // colors: [
           //   Colors.red,
           //   Colors.green,
