@@ -25,7 +25,9 @@ class _LoginAnimationState extends State<LoginAnimation> {
   FocusNode passwordFocusNode = FocusNode();
   TextEditingController passwordController = TextEditingController();
 
-  Color buttoncolor = Color(0xffB04863);
+  Color buttoncolor = Colors.lightBlueAccent;
+  //   Color buttoncolor = Color(0xffB04863);
+  Color textcolor = Colors.black;
 
   @override
   void initState() {
@@ -52,18 +54,16 @@ class _LoginAnimationState extends State<LoginAnimation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Login",style: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: textcolor,
+        ),),
+        backgroundColor: buttoncolor,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              height: 80,
-              color: buttoncolor,
-              alignment: Alignment.bottomCenter,
-              child: Text(
-                "Login",
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
-            ),
             SizedBox(
                 height: 250,
                 child: RiveAnimation.asset(
@@ -88,7 +88,7 @@ class _LoginAnimationState extends State<LoginAnimation> {
               width: 330,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(25),
                 boxShadow: const [
                   BoxShadow(blurRadius: 20.0, color: Colors.black26
                       //color: Color(0xff4e4e4e12),
@@ -211,7 +211,7 @@ class _LoginAnimationState extends State<LoginAnimation> {
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white),
+                              color: textcolor),
                         ),
                       ),
                     ),
@@ -223,6 +223,7 @@ class _LoginAnimationState extends State<LoginAnimation> {
         ),
       ),
       backgroundColor: Color(0xffD6E2EA),
+      //backgroundColor: Colors.white,
     );
   }
 }

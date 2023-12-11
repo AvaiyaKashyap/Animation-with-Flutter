@@ -1,4 +1,5 @@
 import 'package:animation_project/homepage.dart';
+import 'package:animation_project/loginpage.dart';
 import 'package:animation_project/paintdetail.dart';
 import 'package:animation_project/splashscreen.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ Future<void> main() async {
     debugShowCheckedModeBanner: false,
     theme: ThemeData(useMaterial3: true),
     routes: {
-      '/': (context) => const HomePage(),
+      '/': (context) => const LoginAnimation(),
       'detailpage': (context) => const PaintDetail(),
     },
   ));

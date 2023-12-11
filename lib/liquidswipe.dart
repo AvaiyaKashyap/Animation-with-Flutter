@@ -66,8 +66,8 @@ class LiquidSwipeAnimation extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -88,8 +88,8 @@ class LiquidSwipeAnimation extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
                 child: Image.asset("assets/painting2.jpg")),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.0),
             child: Column(
               // mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,8 +117,8 @@ class LiquidSwipeAnimation extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -139,8 +139,8 @@ class LiquidSwipeAnimation extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 child: Image.asset("assets/painting3.jpg")),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.0),
             child: Column(
               // mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -168,8 +168,8 @@ class LiquidSwipeAnimation extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -190,8 +190,8 @@ class LiquidSwipeAnimation extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 child: Image.asset("assets/painting4.jpg")),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.0),
             child: Column(
               // mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -214,6 +214,8 @@ class LiquidSwipeAnimation extends StatelessWidget {
       ),
     ),
   ];
+
+  LiquidSwipeAnimation({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
