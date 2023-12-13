@@ -50,6 +50,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
   }
@@ -61,80 +62,78 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _carouselIndex = 0;
-  int _rowIndex = 0;
-
- List<String> _carouselImageUrls = [
-    'https://cdn.discordapp.com/attachments/981192402519879740/1122773847242973245/pngegg.png',
-    'https://cdn.discordapp.com/attachments/1005755400202760252/1159091604070600775/Playturf-01.jpg',
-    'https://cdn.discordapp.com/attachments/981192402519879740/1122772871870173245/107175_circle_facebook_icon.png',
-    // Add more carousel image URLs as needed
-  ];
-
-  List<String> _rowImageUrls = [
-    'https://cdn.discordapp.com/attachments/981192402519879740/1122772871870173245/107175_circle_facebook_icon.png',
-    'https://cdn.discordapp.com/attachments/981192402519879740/1122773847242973245/pngegg.png',
-    'https://cdn.discordapp.com/attachments/1005755400202760252/1159091604070600775/Playturf-01.jpg',
-    // Add more row image URLs as needed
-  ];
+  final CarouselController _carouselController = CarouselController();
+  final PageController _pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Carousel Slider Demo'),
+        title: Text('Carousel and PageView Sync'),
       ),
       body: Column(
         children: [
+          // Carousel Slider
           CarouselSlider(
+            items: [
+              // Your carousel items go here
+              Container(
+                color: Colors.blue,
+                child: Center(
+                  child: Text('Page 1'),
+                ),
+              ),
+              Container(
+                color: Colors.red,
+                child: Center(
+                  child: Text('Page 2'),
+                ),
+              ),
+              // Add more items as needed
+            ],
+            carouselController: _carouselController,
             options: CarouselOptions(
               onPageChanged: (index, reason) {
-                setState(() {
-                  _carouselIndex = index;
-                });
+                // Update PageView index when carousel slider is swiped
+                _pageController.animateToPage(
+                  index,
+                  duration: Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                );
               },
+              // Add other carousel options as needed
             ),
-            items: _carouselImageUrls.map((url) {
-              return Builder(
-                builder: (BuildContext context) {
-                  return Image.network(
-                    url,
-                    fit: BoxFit.cover,
-                  );
-                },
-              );
-            }).toList(),
           ),
-          SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: _rowImageUrls.asMap().entries.map((entry) {
-              int index = entry.key;
-              return GestureDetector(
-                onTap: () {
-                  setState(() {
-                    _rowIndex = index;
-                    _carouselIndex = index; // Update the carousel index as well
-                  });
-                },
-                child: Container(
-                  width: 50,
-                  height: 50,
-                  margin: EdgeInsets.symmetric(horizontal: 5),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: _rowIndex == index ? Colors.blue : Colors.transparent,
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Image.network(
-                    entry.value,
-                    fit: BoxFit.cover,
+
+          // PageView
+          Expanded(
+            child: PageView(
+              controller: _pageController,
+              children: [
+                // Your page view items go here
+                Container(
+                  color: Colors.blue,
+                  child: Center(
+                    child: Text('Page 1'),
                   ),
                 ),
-              );
-            }).toList(),
+                Container(
+                  color: Colors.red,
+                  child: Center(
+                    child: Text('Page 2'),
+                  ),
+                ),
+                // Add more items as needed
+              ],
+              onPageChanged: (index) {
+                // Update carousel slider index when page view is swiped
+                _carouselController.animateToPage(
+                  index,
+                  duration: Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                );
+              },
+            ),
           ),
         ],
       ),
